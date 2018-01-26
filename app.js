@@ -434,4 +434,3 @@
   })(budgetController, UIController);
 
 controller.init();
-
