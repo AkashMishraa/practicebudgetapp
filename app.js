@@ -202,7 +202,7 @@
   return {
     getinput: function(){
       return {
-         type: document.querySelector(DOMstring.inputType).value, //will be eighter income or expencess
+         type: document.querySelector(DOMstring.inputType).value, //will be either income or expencess
          description: document.querySelector(DOMstring.inputDescripion).value,
          value: parseFloat(document.querySelector(DOMstring.inputValue).value)
       };
@@ -283,15 +283,15 @@
       },
 
       displayMonth: function(){
-        var now, year,month, months;
+        var now, year,currentMonthIndex, arrayOfStringForAllMonths;
         now = new Date();
         //var
 
-        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        arrayOfStringForAllMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         year = now.getFullYear();
-        month = now.getMonth();
+        currentMonthIndex = now.getMonth();
 
-        document.querySelector(DOMstring.dateLabel).textContent = months[month]+' '+ year;
+        document.querySelector(DOMstring.dateLabel).textContent = arrayOfStringForAllMonths[currentMonthIndex]+' '+ year;
       },
 
       changedType: function(){
@@ -326,7 +326,7 @@
       if(event.keyCode === 13 || event.which === 13){
       //  console.log("Enter was pressed");
         // 1. get the filed input data
-        // 2. Add item to the bidget controller
+        // 2. Add item to the budget controller
         // 3. Add the item to the UI
         // 4. Calculate the budget
         // 5. Display the budget on UI
@@ -369,7 +369,7 @@
       //console.log(input);
       if(input.description !== "" && !isNaN(input.value) && input.value > 0){
 
-        // 2. Add item to the bidget controller
+        // 2. Add item to the budget controller
          newItem = budgetCtrl.addItem(input.type, input.description, input.value);
         // 3. Add the item to the UI
         UICtrl.addListItem(newItem, input.type);
